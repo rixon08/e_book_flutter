@@ -227,7 +227,6 @@ void main() {
       },
       act: (bloc) async {
         bloc.add(ListEBookRefreshDataEBookEvent());
-        await Future.delayed(Duration.zero);
         bloc.add(ListEBookLoadMoreDataEBookEvent());
       },
       skip: 2,

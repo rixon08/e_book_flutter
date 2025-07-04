@@ -69,19 +69,9 @@ class ListLikedEBookBloc
           "${(event as ListLikedEBookRefreshSearchDataShowLoadingEvent).searchKeyword}";
     }
     final resultApi = await getDataLikedEBookUsecase.execute(search: search);
-    // _setNextUrl(apiResponse.next);
     _eBook.clear();
     _eBook.addAll(resultApi);
     return emit(ListLikedEBookSuccessRefreshDataState(_eBook, _isLastData));
-    // resultApi.fold(
-    //   (failure) => emit(ListLikedEBookFailedLoadDataState(AppStrings.errorMessage)),
-    //   (apiResponse) {
-    //     _setNextUrl(apiResponse.next);
-    //     _eBook.clear();
-    //     _eBook.addAll(apiResponse.data ?? []);
-    //     return emit(ListEBookSuccessRefreshDataState(_eBook, _isLastData));
-    //   },
-    // );
   }
 
   Future<void> _onResetSearchMode(
